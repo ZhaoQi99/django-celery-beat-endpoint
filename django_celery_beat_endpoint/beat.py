@@ -8,7 +8,7 @@ from celery.beat import PersistentScheduler
 from celery.utils.imports import symbol_by_name
 from django.utils import timezone
 
-from django_celery_beat_status import __version__
+from django_celery_beat_endpoint import __version__
 
 
 class AwareThread(threading.Thread):

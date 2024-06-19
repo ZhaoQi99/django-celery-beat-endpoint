@@ -1,10 +1,10 @@
-# Django Celery Beat Status
-[![Python version](https://img.shields.io/pypi/pyversions/django-celery-beat-status.svg?logo=python)](https://pypi.python.org/pypi/django-celery-beat-status)
-![PyPI - Versions from Framework Classifiers](https://img.shields.io/pypi/frameworkversions/django/django-celery-beat-status)
-[![PyPI package](https://img.shields.io/pypi/v/django-celery-beat-status.svg)](https://pypi.python.org/pypi/django-celery-beat-status)
-[![PyPI download](https://img.shields.io/pypi/dm/django-celery-beat-status.svg)](https://pypi.python.org/pypi/django-celery-beat-status)
-[![GitHub](https://img.shields.io/github/license/ZhaoQi99/django-celery-beat-status)](https://github.com/ZhaoQi99/django-celery-beat-status/blob/main/LICENSE)
-![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/ZhaoQi99/django-celery-beat-status)
+# Django Celery Beat Endpoint
+[![Python version](https://img.shields.io/pypi/pyversions/django-celery-beat-endpoint.svg?logo=python)](https://pypi.python.org/pypi/django-celery-beat-endpoint)
+![PyPI - Versions from Framework Classifiers](https://img.shields.io/pypi/frameworkversions/django/django-celery-beat-endpoint)
+[![PyPI package](https://img.shields.io/pypi/v/django-celery-beat-endpoint.svg)](https://pypi.python.org/pypi/django-celery-beat-endpoint)
+[![PyPI download](https://img.shields.io/pypi/dm/django-celery-beat-endpoint.svg)](https://pypi.python.org/pypi/django-celery-beat-endpoint)
+[![GitHub](https://img.shields.io/github/license/ZhaoQi99/django-celery-beat-endpoint)](https://github.com/ZhaoQi99/django-celery-beat-endpoint/blob/main/LICENSE)
+![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/ZhaoQi99/django-celery-beat-endpoint)
 
 A library that provides `status` and `tasks` HTTP API for Django Celery Beat.
 
@@ -17,10 +17,10 @@ Inspired by [vintasoftware/django-celerybeat-status](https://github.com/vintasof
 
 ## Install
 ```shell
-pip install django-celery-beat-status
+pip install django-celery-beat-endpoint
 ✨🍰✨
 ```
-Or you can use `pip install git+https://github.com/ZhaoQi99/django-celery-beat-status.git
+Or you can use `pip install git+https://github.com/ZhaoQi99/django-celery-beat-endpoint.git
 ` install latest version.
 
 ## Usage
@@ -28,10 +28,10 @@ Or you can use `pip install git+https://github.com/ZhaoQi99/django-celery-beat-s
 Just edit `proj/celery.py`, and replace `Celery` with `AwareCelery`
 
 ```python
-from django_celery_beat_status.celery import AwareCelery
+from django_celery_beat_endpoint.celery import AwareCelery
 app = AwareCelery("proj")
 # Or
-from django_celery_beat_status.celery import AwareCelery as Celery
+from django_celery_beat_endpoint.celery import AwareCelery as Celery
 app = Celery("proj")
 
 ```
@@ -43,7 +43,7 @@ Or you can use a `CELERY_` prefix uppercase setting and loading configuration fr
 * beat_port / CELERY_BEAT_PORT - port for http server
     > Default: 8005
 * http_server / CELERY_BEAT_HTTP_SERVER - HTTP server class
-    > Default: "django_celery_beat_status.backends:HTTPServer"
+    > Default: "django_celery_beat_endpoint.backends:HTTPServer"
 
 ### API
 * /status
@@ -72,7 +72,7 @@ Or you can use a `CELERY_` prefix uppercase setting and loading configuration fr
 - [ ] Support more server backends, such as Tornado, Flask and FastAPI.
 
 ## License
-[GNU General Public License v3.0](https://github.com/ZhaoQi99/django-celery-beat-status/blob/main/LICENSE)
+[GNU General Public License v3.0](https://github.com/ZhaoQi99/django-celery-beat-endpoint/blob/main/LICENSE)
 
 ## Author
 * Qi Zhao([zhaoqi99@outlook.com](mailto:zhaoqi99@outlook.com))
