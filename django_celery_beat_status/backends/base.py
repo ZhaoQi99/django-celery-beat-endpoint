@@ -3,7 +3,7 @@ import json
 import traceback
 from http import HTTPStatus
 
-from ..beat import AwareBeat
+from django_celery_beat_status.beat import AwareBeat
 
 
 def exception_handler(func):

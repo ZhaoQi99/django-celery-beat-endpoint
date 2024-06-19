@@ -7,13 +7,15 @@ from celery.apps.beat import Beat
 from celery.beat import PersistentScheduler
 from celery.utils.imports import symbol_by_name
 from django.utils import timezone
+
 from django_celery_beat_status import __version__
 
 
 class AwareThread(threading.Thread):
-    def __init__(self, port, beat):
-        self.port = port
+    def __init__(self, beat, port, http_server_cls):
         self.beat = beat
+        self.port = port
+        self.http_server_cls = http_server_cls
         super(AwareThread, self).__init__(daemon=True)
 
     def run(self):
@@ -21,19 +23,20 @@ class AwareThread(threading.Thread):
 
         print(
             self.beat.colored.green(
-                f"Serving celery beat status v{__version__} on port {self.port}."
+                f"Serving celery beat status v{__version__} on port {self.port} using {self.http_server_cls}."
             )
         )
 
-        from django_celery_beat_status.backends.base import HTTPServer
-
-        HTTPServer(self.beat, self.port).serve()
+        server = symbol_by_name(self.http_server_cls)(beat=self.beat, port=self.port)
+        server.serve()
 
 
 class AwareBeat(Beat):
     def run(self):
-        port = getattr(self.app.conf, "beat_port", 8005)
-        AwareThread(port, self).start()
+        port = self.app.conf.beat_port
+        http_server_cls = self.app.conf.beat_http_server
+
+        AwareThread(self, port, http_server_cls).start()
         super(AwareBeat, self).run()
 
     def ping(self):
