@@ -1,6 +1,5 @@
 # Django Celery Beat Endpoint
 [![Python version](https://img.shields.io/pypi/pyversions/django-celery-beat-endpoint.svg?logo=python)](https://pypi.python.org/pypi/django-celery-beat-endpoint)
-![PyPI - Versions from Framework Classifiers](https://img.shields.io/pypi/frameworkversions/django/django-celery-beat-endpoint)
 [![PyPI package](https://img.shields.io/pypi/v/django-celery-beat-endpoint.svg)](https://pypi.python.org/pypi/django-celery-beat-endpoint)
 [![PyPI download](https://img.shields.io/pypi/dm/django-celery-beat-endpoint.svg)](https://pypi.python.org/pypi/django-celery-beat-endpoint)
 [![GitHub](https://img.shields.io/github/license/ZhaoQi99/django-celery-beat-endpoint)](https://github.com/ZhaoQi99/django-celery-beat-endpoint/blob/main/LICENSE)
@@ -11,7 +10,7 @@ A library that provides basic `status` and `tasks` endpoint for Django Celery Be
 Inspired by [vintasoftware/django-celerybeat-status](https://github.com/vintasoftware/django-celerybeat-status)
 
 ## Requirements
-* Python 3.6+
+* Python >= 3.6
 * [Django](https://docs.djangoproject.com/)
 * [Celery](https://docs.celeryq.dev/)
 
