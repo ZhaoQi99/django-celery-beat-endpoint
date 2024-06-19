@@ -29,9 +29,11 @@ Just edit `proj/celery.py`, and replace `Celery` with `AwareCelery`
 
 ```python
 from django_celery_beat_status.celery import AwareCelery
-# Or from django_celery_beat_status.celery import AwareCelery as Celery
-...
-app = AwareCelery("aiops")
+app = AwareCelery("proj")
+# Or
+from django_celery_beat_status.celery import AwareCelery as Celery
+app = Celery("proj")
+
 ```
 ### Settings
 * CELERY_BEAT_PORT - HTTP port, default is 8005
