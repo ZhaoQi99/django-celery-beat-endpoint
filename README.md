@@ -6,7 +6,7 @@
 [![GitHub](https://img.shields.io/github/license/ZhaoQi99/django-celery-beat-endpoint)](https://github.com/ZhaoQi99/django-celery-beat-endpoint/blob/main/LICENSE)
 ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/ZhaoQi99/django-celery-beat-endpoint)
 
-A library that provides `status` and `tasks` HTTP API for Django Celery Beat.
+A library that provides basic `status` and `tasks` endpoint for Django Celery Beat.
 
 Inspired by [vintasoftware/django-celerybeat-status](https://github.com/vintasoftware/django-celerybeat-status)
 
