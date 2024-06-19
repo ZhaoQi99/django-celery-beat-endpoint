@@ -37,10 +37,10 @@ class AwareBeat(Beat):
         super(AwareBeat, self).run()
 
     def ping(self):
-        self.check_status()
+        self.get_periodic_tasks()
         return True
 
-    def check_status(self):
+    def get_periodic_tasks(self):
         if symbol_by_name(self.scheduler_cls) == PersistentScheduler:
             schedule = self.Service(
                 app=self.app,

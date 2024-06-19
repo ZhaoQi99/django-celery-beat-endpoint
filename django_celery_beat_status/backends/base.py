@@ -42,7 +42,7 @@ class JsonHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 
     @exception_handler
     def _handle_tasks(self):
-        response = self.beat.check_status()
+        response = self.beat.get_periodic_tasks()
         self.send_json(response)
 
     def do_GET(self):
