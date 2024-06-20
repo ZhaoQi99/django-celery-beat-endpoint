@@ -63,7 +63,7 @@ Or you can use a `CELERY_` prefix uppercase setting and loading configuration fr
     "schedule": "<freq: 1.00 minute>",
     "kwargs": "{}",
     "is_due": true,
-    "next_excecution": "2024-06-18 20:00:10"
+    "next_execution": "2024-06-18 20:00:10"
   }
 ]
 ```

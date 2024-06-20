@@ -23,7 +23,7 @@ class AwareThread(threading.Thread):
 
         print(
             self.beat.colored.green(
-                f"Serving celery beat status v{__version__} on port {self.port} using {self.http_server_cls}."
+                f"Serving celery beat endpoint v{__version__} on port {self.port} using {self.http_server_cls}."
             )
         )
 
@@ -62,7 +62,7 @@ class AwareBeat(Beat):
 
             tz = entry.schedule.tz
             last_run_at = entry.last_run_at.astimezone(tz)
-            next_excecution = (
+            next_execution = (
                 timezone.now() + datetime.timedelta(seconds=next_time_to_check)
             ).astimezone(tz)
 
@@ -79,7 +79,7 @@ class AwareBeat(Beat):
                     "schedule": str(entry.schedule),
                     "kwargs": json.dumps(entry.kwargs, ensure_ascii=False),
                     "is_due": is_due,
-                    "next_excecution": next_excecution.strftime("%Y-%m-%d %H:%M:%S"),
+                    "next_execution": next_execution.strftime("%Y-%m-%d %H:%M:%S"),
                 }
             )
         return tasks
