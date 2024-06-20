@@ -54,7 +54,7 @@ class AwareBeat(Beat):
         else:
             from django_celery_beat.schedulers import DatabaseScheduler
 
-            schedule = DatabaseScheduler(self.app).all_as_schedule()
+            schedule = DatabaseScheduler(self.app, lazy=True).all_as_schedule()
 
         tasks = list()
         for key, entry in schedule.items():
