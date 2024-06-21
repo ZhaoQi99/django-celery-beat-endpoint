@@ -61,10 +61,15 @@ class AwareBeat(Beat):
             is_due, next_time_to_check = entry.is_due()
 
             tz = entry.schedule.tz
+            now = timezone.now().astimezone(tz)
             last_run_at = entry.last_run_at.astimezone(tz)
-            next_execution = (
-                timezone.now() + datetime.timedelta(seconds=next_time_to_check)
-            ).astimezone(tz)
+   
+            if now.replace(microsecond=0) == last_run_at.replace(microsecond=0):
+                last_run_at = None
+            else:
+                last_run_at = last_run_at.strftime("%Y-%m-%d %H:%M:%S")
+
+            next_execution = now + datetime.timedelta(seconds=next_time_to_check)
 
             tasks.append(
                 {
@@ -75,7 +80,7 @@ class AwareBeat(Beat):
                             [json.dumps(arg, ensure_ascii=False) for arg in entry.args]
                         )
                     ),
-                    "last_run_at": last_run_at.strftime("%Y-%m-%d %H:%M:%S"),
+                    "last_run_at": last_run_at,
                     "schedule": str(entry.schedule),
                     "kwargs": json.dumps(entry.kwargs, ensure_ascii=False),
                     "is_due": is_due,
