@@ -3,6 +3,8 @@ import json
 import traceback
 from http import HTTPStatus
 
+from django.db import close_old_connections
+
 from django_celery_beat_endpoint.beat import AwareBeat
 
 
@@ -24,6 +26,11 @@ class JsonHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
     def __init__(self, *args, beat: "AwareBeat", **kwargs) -> None:
         self.beat = beat
         super().__init__(*args, **kwargs)
+
+    def handle_one_request(self) -> None:
+        close_old_connections()
+        super().handle_one_request()
+        close_old_connections()
 
     def send_json(self, data, code=None):
         if code is None:
